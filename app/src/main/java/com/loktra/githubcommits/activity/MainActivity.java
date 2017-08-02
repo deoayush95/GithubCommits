@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.loktra.githubcommits.R;
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         getDataFromAPI();
     }
 
+    //api call to get data from github repo
     private void getDataFromAPI() {
         Call<GithubData> call = searchAdapter.getSearchQuery();
         call.enqueue(new Callback<GithubData>() {
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //setup recyclerview
     private void setupRecycleView() {
         mAdapter = new CommitRecyclerAdapter(itemList,this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    //setup api call adapter
     private void setupRestAdapter() {
         searchAdapter = RestClientAdapter.createRestAdapter(SearchQuery.class,BASE_URL,this);
     }
