@@ -1,5 +1,7 @@
 package com.loktra.githubcommits.api;
 
+import com.loktra.githubcommits.model.GithubData;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -12,5 +14,5 @@ import retrofit2.http.Query;
 public interface SearchQuery {
 
     @GET("/search/commits?q=repo:rails/rails+css")
-    Call<ResponseBody> getSearchQuery();
+    Call<GithubData> getSearchQuery();
 }
