@@ -9,7 +9,6 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * Created by ayushdeothia on 02/07/17.
@@ -39,9 +38,6 @@ public class RestClient {
             }
         };
 
-        //creating log Interceptor
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         if (mClient == null) {
             synchronized (RestClient.class) {
@@ -50,7 +46,6 @@ public class RestClient {
                             .readTimeout(60, TimeUnit.SECONDS)
                             .connectTimeout(60, TimeUnit.SECONDS)
                             .addInterceptor(requestInterceptor)
-                            .addInterceptor(logging)
                             .build();
 
 
